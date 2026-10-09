@@ -2577,7 +2577,7 @@ def get_sales_summary():
 # =========================
 # SALES
 # =========================
-def     show_sales():
+def show_sales():
 
     clear_screen()
 
@@ -3045,7 +3045,8 @@ def     show_sales():
     )
     table.pack(
         fill="both",
-        expand=True
+        expand=True,
+        pady=(0, 10)
     )
 
     ctk.CTkLabel(
@@ -3104,14 +3105,27 @@ def     show_sales():
             pady=8,
             sticky="w"
         )
+        
+    sales_scroll = ctk.CTkScrollableFrame(
+        table,
+        height=300,
+        fg_color="transparent",
+        corner_radius=6
+    )
 
+    sales_scroll.pack(
+        fill="both",
+        expand=True,
+        padx=15,
+        pady=(0, 15)
+    )
      # =========================
     # SALES ROWS
     # =========================
     for sale in sales:
 
         row = ctk.CTkFrame(
-            table,
+            sales_scroll,
             fg_color="#0E2A42",
             corner_radius=6,
             height=48
@@ -3709,20 +3723,33 @@ def show_reports():
             sticky="w"
         )
 
+    
     # =========================
-    # SALES ROWS
+    # SCROLLABLE SALES ROWS
     # =========================
-    for sale in sales:
+    sales_scroll = ctk.CTkScrollableFrame(
+        report_table,
+        height=300,
+        fg_color="transparent",
+        corner_radius=6
+    )
+    sales_scroll.pack(
+        fill="both",
+        expand=True,
+        padx=15,
+        pady=(0, 15)
+    )
 
+    for sale in sales:
         row = ctk.CTkFrame(
-            report_table,
+            sales_scroll,
             fg_color="#0E2A42",
             corner_radius=6,
             height=48
         )
         row.pack(
             fill="x",
-            padx=15,
+            padx=5,
             pady=3
         )
         row.pack_propagate(False)
@@ -3736,7 +3763,6 @@ def show_reports():
         ]
 
         for i, value in enumerate(values):
-
             ctk.CTkLabel(
                 row,
                 text=str(value),

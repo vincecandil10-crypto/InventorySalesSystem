@@ -27,3 +27,35 @@ SELECT * FROM sales;
  
  SELECT product_id, product_name, stock, status
 FROM products;
+
+
+SELECT COUNT(*) AS total_products
+FROM products;
+
+SELECT * FROM inventory_system.products;
+
+USE inventory_system;
+
+SELECT COUNT(*) AS total_products
+FROM products;
+
+SELECT *
+FROM products
+ORDER BY product_id;
+
+USE inventory_system;
+
+SELECT COUNT(*) AS total_products
+FROM products;
+
+SELECT product_id, product_name, category, price, stock, status
+FROM products
+ORDER BY product_id DESC
+LIMIT 10;
+
+
+USE inventory_system;
+
+SELECT
+    (SELECT COUNT(*) FROM products) AS total_products,
+    (SELECT COUNT(*) FROM sales) AS total_sales;
