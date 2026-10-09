@@ -2524,6 +2524,7 @@ def record_sale(product_id, quantity):
             total_price=total,
             sale_date=__import__("datetime").datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         )
+        show_sales()
 
     except mysql.connector.Error as err:
 
@@ -3012,6 +3013,15 @@ def show_sales():
     quantity_entry.pack(
         side="left",
         padx=(0, 20)
+    )
+    
+    # Press Enter to record sale
+    quantity_entry.bind(
+        "<Return>",
+        lambda event: record_sale(
+            product_entry.get(),
+            quantity_entry.get()
+        )
     )
 
     # Record Button
