@@ -1673,13 +1673,31 @@ def show_inventory():
             sticky="w"
         )
 
+    
+    # =========================
+    # SCROLLABLE INVENTORY AREA
+    # =========================
+    inventory_scroll = ctk.CTkScrollableFrame(
+        table,
+        fg_color="transparent",
+        corner_radius=6,
+        height=400
+    )
+    inventory_scroll.pack(
+        fill="both",
+        expand=True,
+        padx=15,
+        pady=(0, 10)
+    )
+
+    
     # =========================
     # PRODUCT ROWS
     # =========================
     for product in products:
 
         row = ctk.CTkFrame(
-            table,
+            inventory_scroll,
             fg_color="#0E2A42",
             corner_radius=6,
             height=55
@@ -2209,14 +2227,33 @@ def show_products(display_products=None):
             sticky="w"
         )
 
+        
+    
+    # =========================
+    # SCROLLABLE PRODUCT AREA
+    # =========================
+    products_scroll = ctk.CTkScrollableFrame(
+        table,
+        fg_color="transparent",
+        corner_radius=6,
+        height=400
+    )
+    products_scroll.pack(
+        fill="both",
+        expand=True,
+        padx=15,
+        pady=(0, 10)
+    )
+    
     # =========================
     # PRODUCT ROWS
     # =========================
     for product in current_products:
         print("DISPLAYING PRODUCT:", product)
 
+        
         row = ctk.CTkFrame(
-            table,
+            products_scroll,
             fg_color="#0E2A42",
             corner_radius=6,
             height=55
