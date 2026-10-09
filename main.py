@@ -4028,6 +4028,12 @@ def show_login():
     )
     login_button.pack(pady=(12, 15))
 
+    
+    # Allow Enter key to log in
+    username_entry.bind("<Return>", lambda event: login())
+    password_entry.bind("<Return>", lambda event: login())
+    login_button.bind("<Return>", lambda event: login())
+
     # =========================
     # DIVIDER
     # =========================
